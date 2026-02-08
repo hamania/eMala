@@ -22,3 +22,8 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+.npm-cache/
+_cacache/
+.env
+backend/.npm-cache/_cacache/content-v2/sha512/01/9f/93d3fa0b0034f227ce953911fced670728dcba0128f67b8f31047ca05fc2aaa7814648c98be3f559dd093cb91f425ad75b785409d2d41ef2bfd1c7783ddd
+.gitignore
