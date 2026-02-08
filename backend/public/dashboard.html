@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -172,7 +173,8 @@
       border-collapse: collapse;
     }
 
-    th, td {
+    th,
+    td {
       text-align: left;
       padding: 16px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -251,8 +253,237 @@
       padding: 48px;
       color: rgba(255, 255, 255, 0.5);
     }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 20px;
+      padding: 32px;
+      width: 100%;
+      max-width: 480px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .modal-header h3 {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .modal-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(239, 68, 68, 0.3);
+      color: #f87171;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #667eea;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .form-group select option {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.5);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .form-error {
+      color: #f87171;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .form-success {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Toast notifications */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      z-index: 2000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast.success {
+      background: rgba(34, 197, 94, 0.9);
+      color: #fff;
+    }
+
+    .toast.error {
+      background: rgba(239, 68, 68, 0.9);
+      color: #fff;
+    }
   </style>
 </head>
+
 <body>
   <header class="header">
     <h1>eMala</h1>
@@ -291,13 +522,63 @@
     <div class="users-section">
       <div class="section-header">
         <h3>Users Management</h3>
-        <button class="add-btn" onclick="showAddUserModal()">+ Add User</button>
+        <button class="add-btn" id="add-user-btn">+ Add User</button>
       </div>
       <div id="users-table-container">
         <div class="loading">Loading users...</div>
       </div>
     </div>
   </main>
+
+  <!-- Add User Modal -->
+  <div class="modal-overlay" id="add-user-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Add New User</h3>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+
+      <div class="form-success" id="form-success">User created successfully!</div>
+
+      <form id="add-user-form">
+        <div class="form-group">
+          <label for="user-name-input">Full Name</label>
+          <input type="text" id="user-name-input" placeholder="Enter full name" required minlength="2">
+          <div class="form-error" id="name-error"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="user-email-input">Email Address</label>
+          <input type="email" id="user-email-input" placeholder="Enter email address" required>
+          <div class="form-error" id="email-error"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="user-password-input">Password</label>
+          <input type="password" id="user-password-input" placeholder="Enter password (min 6 characters)" required
+            minlength="6">
+          <div class="form-error" id="password-error"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="user-role-input">Role</label>
+          <select id="user-role-input" required>
+            <option value="user">User</option>
+            <option value="manager">Manager</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submit-btn">Create User</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
 
   <script>
     // Check authentication
@@ -311,6 +592,141 @@
     // Display user info
     document.getElementById('user-name').textContent = user?.name || 'User';
     document.getElementById('user-role').textContent = user?.role || 'user';
+
+    // Modal elements
+    const modal = document.getElementById('add-user-modal');
+    const addUserBtn = document.getElementById('add-user-btn');
+    const modalClose = document.getElementById('modal-close');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const addUserForm = document.getElementById('add-user-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formSuccess = document.getElementById('form-success');
+
+    // Open modal
+    addUserBtn.addEventListener('click', () => {
+      modal.classList.add('active');
+      document.getElementById('user-name-input').focus();
+    });
+
+    // Close modal
+    function closeModal() {
+      modal.classList.remove('active');
+      addUserForm.reset();
+      formSuccess.style.display = 'none';
+      clearErrors();
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Close on overlay click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Clear error messages
+    function clearErrors() {
+      document.querySelectorAll('.form-error').forEach(el => {
+        el.style.display = 'none';
+        el.textContent = '';
+      });
+    }
+
+    // Show error for a field
+    function showError(fieldId, message) {
+      const errorEl = document.getElementById(fieldId + '-error');
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.style.display = 'block';
+      }
+    }
+
+    // Toast notification
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type} show`;
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Handle form submission
+    addUserForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearErrors();
+
+      const name = document.getElementById('user-name-input').value.trim();
+      const email = document.getElementById('user-email-input').value.trim();
+      const password = document.getElementById('user-password-input').value;
+      const role = document.getElementById('user-role-input').value;
+
+      // Validate
+      let hasError = false;
+
+      if (name.length < 2) {
+        showError('name', 'Name must be at least 2 characters');
+        hasError = true;
+      }
+
+      if (!email.includes('@')) {
+        showError('email', 'Please enter a valid email');
+        hasError = true;
+      }
+
+      if (password.length < 6) {
+        showError('password', 'Password must be at least 6 characters');
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      // Submit
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="loading-spinner"></span>Creating...';
+
+      try {
+        const response = await fetch('/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ name, email, password, role })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          closeModal();
+          showToast('User created successfully!', 'success');
+          fetchUsers();
+        } else {
+          if (data.errors) {
+            data.errors.forEach(err => {
+              showError(err.field, err.message);
+            });
+          } else {
+            showToast(data.message || 'Error creating user', 'error');
+          }
+        }
+      } catch (error) {
+        showToast('Connection error. Please try again.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Create User';
+      }
+    });
 
     // Fetch users
     async function fetchUsers() {
@@ -357,20 +773,20 @@
           <tbody>
       `;
 
-      users.forEach(user => {
-        const roleClass = `role-${user.role}`;
-        const createdAt = user.created_at ? new Date(user.created_at).toLocaleDateString() : '-';
+      users.forEach(u => {
+        const roleClass = `role-${u.role}`;
+        const createdAt = u.created_at ? new Date(u.created_at).toLocaleDateString() : '-';
         
         html += `
           <tr>
-            <td>${user.id}</td>
-            <td>${user.name}</td>
-            <td>${user.email}</td>
-            <td><span class="role-badge ${roleClass}">${user.role}</span></td>
+            <td>${u.id}</td>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
+            <td><span class="role-badge ${roleClass}">${u.role}</span></td>
             <td>${createdAt}</td>
             <td class="actions">
-              <button class="action-btn" onclick="editUser(${user.id})">Edit</button>
-              <button class="action-btn delete" onclick="deleteUser(${user.id})">Delete</button>
+              <button class="action-btn" onclick="editUser(${u.id})">Edit</button>
+              <button class="action-btn delete" onclick="deleteUser(${u.id})">Delete</button>
             </td>
           </tr>
         `;
@@ -391,47 +807,8 @@
       document.getElementById('total-regular').textContent = regular;
     }
 
-    function showAddUserModal() {
-      const name = prompt('Enter user name:');
-      if (!name) return;
-      
-      const email = prompt('Enter email:');
-      if (!email) return;
-      
-      const password = prompt('Enter password:');
-      if (!password) return;
-      
-      const role = prompt('Enter role (admin/manager/user):', 'user');
-      
-      createUser({ name, email, password, role });
-    }
-
-    async function createUser(userData) {
-      try {
-        const response = await fetch('/api/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify(userData)
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-          alert('User created successfully!');
-          fetchUsers();
-        } else {
-          alert('Error: ' + (data.message || 'Could not create user'));
-        }
-      } catch (error) {
-        alert('Error creating user');
-      }
-    }
-
     function editUser(id) {
-      alert('Edit user ' + id + ' - Coming soon!');
+      showToast('Edit user ' + id + ' - Coming soon!', 'success');
     }
 
     async function deleteUser(id) {
@@ -448,13 +825,13 @@
         const data = await response.json();
         
         if (data.success) {
-          alert('User deleted successfully!');
+          showToast('User deleted successfully!', 'success');
           fetchUsers();
         } else {
-          alert('Error: ' + (data.message || 'Could not delete user'));
+          showToast(data.message || 'Could not delete user', 'error');
         }
       } catch (error) {
-        alert('Error deleting user');
+        showToast('Error deleting user', 'error');
       }
     }
 
@@ -468,4 +845,5 @@
     fetchUsers();
   </script>
 </body>
+
 </html>
