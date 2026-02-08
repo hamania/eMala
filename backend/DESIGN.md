@@ -1,0 +1,1 @@
+generate vuejs app backend, users management with CRUD
