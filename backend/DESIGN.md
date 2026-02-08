@@ -14,6 +14,7 @@ generate vuejs app backend, users management with CRUD operations.
 
 add login admin:admin page
 
+<<<<<<< HEAD
     fix button add User 
 
 
@@ -21,3 +22,6 @@ add login admin:admin page
 
 
 fix: list all users from table db
+=======
+    fix button add User 
+>>>>>>> origin/main
