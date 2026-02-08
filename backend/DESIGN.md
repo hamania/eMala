@@ -1,1 +1,3 @@
-generate vuejs app backend, users management with CRUD
+generate vuejs app backend, users management with CRUD operations.
+
+add login admin:admin page
