@@ -5,3 +5,15 @@ in frontend , create vuejs app port 443 to display 9 buttons clickable
 btn1: foreach click, store timestamp with speed in since laste 30s
 
 show message: 1 camle 2 medium 3 pressure
+
+btn2: press and hold
+1s: aware
+2s: restore
+3s++: depresser
+
+
+
+
+
+
+
