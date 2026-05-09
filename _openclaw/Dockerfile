@@ -20,6 +20,7 @@ FROM node:22-bookworm-slim
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g pnpm
+RUN npm install -g puppeteer 2>&1 | tail -5
 
 WORKDIR /app
 
