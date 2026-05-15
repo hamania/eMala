@@ -12,6 +12,8 @@ RUN ls -R /app
 
 RUN pnpm install
 
+RUN pnpm ui:build
+
 WORKDIR /app/gateway
 RUN pnpm build
 
@@ -25,6 +27,8 @@ RUN npm install -g puppeteer 2>&1 | tail -5
 WORKDIR /app
 
 COPY --from=build /app /app
+
+COPY custom-ui/assets/index-Dm6g1E26.js /app/dist/control-ui/assets/index-Dm6g1E26.js
 
 EXPOSE 3000
 
